@@ -1,0 +1,19 @@
+{
+  "name": "unscan.co",
+  "version": "1.0.0",
+  "description": "The official Unscan library for Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unscan-co/unscan-node.git"
+  },
+  "author": "Daniel Langezaal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/unscan-co/unscan-node/issues"
+  },
+  "homepage": "https://github.com/unscan-co/unscan-node#readme"
+}
