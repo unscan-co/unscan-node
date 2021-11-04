@@ -1,5 +1,6 @@
-const request = require("request-promise");
 const fs = require("fs");
+const fetch = require("node-fetch");
+const FormData = require("form-data");
 
 async function _stream(stream, scanType) {
   return await uploadFile(stream, scanType);
@@ -30,18 +31,21 @@ class malware {
 
 class link {
   async scan(url) {
-    const res = await request.post({
-      url: "https://api.unscan.co/link",
-      json: {
+    const response = await fetch("https://api.unscan.co/link", {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
         "link": url
-      }
+      })
     });
 
-    if (!res.success) {
-      throw new Error(res.message);
+    const result = await response.json();
+
+    if (!result.success) {
+      const error = new Error(result.message);      
     }
 
-    return res;
+    return result;
   }
 }
 
@@ -52,20 +56,23 @@ class link {
  * @returns
  */
 async function uploadFile(content, endpoint) {
-  const res = await request.post({
-    url: "https://api.unscan.co/" + endpoint,
-    formData: {
-      file: content,
-    },
+  const form = new FormData();
+
+  form.append("file", content)
+
+  const response = await fetch("https://api.unscan.co/" + endpoint, {
+    method: "POST",
+    body: form,
   });
 
-  const json = JSON.parse(res);
+  const result = await response.json();
 
-  if (!json.success) {
-    throw new Error(json.message);
+  if (!result.success) {
+    console.log(result)
+    throw new Error("err " + result.message);
   }
 
-  return json;
+  return result;
 }
 
 exports.nsfw = new nsfw();

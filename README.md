@@ -1,14 +1,82 @@
 # unscan
-The official unscan library for Node.js
+The official unscan CLI and a library for Node.js
 
-## Installation
-The installation of the library is really easy. Simply run the following command and everything will be installed. Unscan doesn't require an API key.
+## Use unscan from the command line
+Run the following command to install **unscan** globally.
+```bash
+npm i -g unscan
 ```
+
+After installing the **unscan** globally, you can scan for files and links using the `unscan` command.
+
+### Scan for NSFW from the command line
+```bash
+unscan nsfw ../acid-burn.png
+```
+Example result:
+```
+The file has been scanned
+{
+  "success": true,
+  "nsfw": false,
+  "scores": {
+    "safe": 59,
+    "nsfw": 0
+  },
+  "guess": {
+    "safe": true,
+    "nsfw": false
+  },
+  "argumentation": {
+    "neutral": 59,
+    "drawing": 40,
+    "hentai": 0,
+    "sexy": 0,
+    "porn": 0
+  }
+}
+```
+
+### Scan for malware from the command line
+```bash
+unscan malware ../crash-override.exe
+```
+Example result:
+```
+The file is infected
+{
+  "success": true,
+  "infected": true,
+  "malware": [
+    "Win.Test.EICAR_HDB-1"
+  ]
+}
+```
+
+### Scan links from the command line
+```bash
+unscan link http://lord-nikon.online
+```
+Example result:
+```
+Link found in database
+{
+  "success": true,
+  "safe": false,
+  "tags": [
+    "PORN",
+    "PHISHING"
+  ]
+}
+```
+
+## Use unscan API
+For programmatic use, install **unscan** as a project dependency.
+```bash
 npm i unscan
 ```
 
-## Documentation
-It's a fairly simple library. You just have to import the libray and you can start using it as following:
+**Note:** Unscan doesn't require an API key.
 
 ### Scan for NSFW
 The following code shows how the library can be used to scan for nsfw content in a file. Check the `examples` folder for more examples.
