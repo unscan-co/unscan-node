@@ -1,7 +1,7 @@
 {
   "name": "unscan",
-  "version": "1.1.0",
-  "description": "The official Unscan.co library for Node.js",
+  "version": "1.1.1",
+  "description": "The official Unscan.co library and CLI for Node.js",
   "main": "src/index.js",
   "bin": {
     "unscan": "./bin/unscan.js"
