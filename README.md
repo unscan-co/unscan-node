@@ -1,5 +1,46 @@
 # unscan
-The official unscan CLI and a library for Node.js
+The official unscan library and CLI for Node.js
+
+## Use unscan API
+For programmatic use, install **unscan** as a project dependency.
+```bash
+npm i unscan
+```
+
+**Note:** Unscan doesn't require an API key.
+
+### Scan for NSFW
+The following code shows how the library can be used to scan for nsfw content in a file. Check the `examples` folder for more examples.
+```js
+const unscan = require('unscan')
+
+// Check a file location
+unscan.nsfw.file('./localFile.png')
+
+// Check a stream
+unscan.nsfw.stream(streamHere)
+```
+### Scan for Malware
+The following code shows how the library can be used to scan for malware content in a file. Check the `examples` folder for more examples.
+```js
+const unscan = require('unscan')
+
+// Check a file location
+unscan.malware.file('./localFile.exe')
+
+// Check a stream
+unscan.malware.stream(streamHere)
+```
+
+### Scan links
+The following code shows how the library can be used to scan links and give them a tag. This allows you to check if a website is, for example,a dating site or an adult themed site. Check the `examples` folder for more examples.
+```js
+const unscan = require('unscan')
+
+// Check a link
+unscan.link.scan('lngzl.nl')
+
+```
 
 ## Use unscan from the command line
 Run the following command to install **unscan** globally.
@@ -70,46 +111,6 @@ Link found in database
 }
 ```
 
-## Use unscan API
-For programmatic use, install **unscan** as a project dependency.
-```bash
-npm i unscan
-```
-
-**Note:** Unscan doesn't require an API key.
-
-### Scan for NSFW
-The following code shows how the library can be used to scan for nsfw content in a file. Check the `examples` folder for more examples.
-```js
-const unscan = require('unscan')
-
-// Check a file location
-unscan.nsfw.file('./localFile.png')
-
-// Check a stream
-unscan.nsfw.stream(streamHere)
-```
-### Scan for Malware
-The following code shows how the library can be used to scan for malware content in a file. Check the `examples` folder for more examples.
-```js
-const unscan = require('unscan')
-
-// Check a file location
-unscan.malware.file('./localFile.exe')
-
-// Check a stream
-unscan.malware.stream(streamHere)
-```
-
-### Scan links
-The following code shows how the library can be used to scan links and give them a tag. This allows you to check if a website is, for example,a dating site or an adult themed site. Check the `examples` folder for more examples.
-```js
-const unscan = require('unscan')
-
-// Check a link
-unscan.link.scan('lngzl.nl')
-
-```
 ## Notes
 The code isn't the cleanest and has to be more organized in the future but it does it's thing.
 
